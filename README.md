@@ -1,3 +1,3 @@
 # TareasLabPED
 
-Repositorio donde encontraras las taras asignadas de los laboratorios de programacion 3:
+Repositorio donde encontraras las tareas asignadas de los laboratorios de programacion 3:
