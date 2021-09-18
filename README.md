@@ -1,2 +1,3 @@
 # TareasLabPED
-Don't steal pls, ty 3:
+
+Repositorio donde encontraras las taras asignadas de los laboratorios de programacion 3:
