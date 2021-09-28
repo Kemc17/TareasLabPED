@@ -68,38 +68,44 @@ void listaSimple::agregarOrden(void)
 void listaSimple::mostrarOrden()
 {
 	Nodo *dato = pInicio;
+
 	if (!dato)
     {   
         cout<<"\t\n*No hay orden que mostrar*\n";
         return;
     }
 	else
-	{
+	{   
         cout<<"Pupusas: "<<dato->pupusas<<endl;
         cout<<"Tipo de pupusas: "<<dato->tipoPupusas<<endl;
         cout<<"Con Coca-Cola: "<<dato->soda<<endl;
         cout<<"Ingredientes: "<<dato->ingredientes<<endl;
+        cout<<"\n";
 		mostrarOrden(dato->siguiente);
     }
 }
 void listaSimple::mostrarOrden(Nodo *dato)
 {
+
 	if (!dato)
 		return;
 	else
-	{
+	{   
         cout<<"Pupusas: "<<dato->pupusas<<endl;
         cout<<"Tipo de pupusas: "<<dato->tipoPupusas<<endl;
         cout<<"Con Coca-Cola: "<<dato->soda<<endl;
         cout<<"Ingredientes: "<<dato->ingredientes<<endl;
+        cout<<"\n";
 		mostrarOrden(dato->siguiente);
+        
 	}
+    
 }
 
 int main(void)
 {
 	listaSimple orden;
-	int opcion;
+	int opcion, i = 1;
 
     do{
         menu();
