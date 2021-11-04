@@ -20,7 +20,6 @@ public:
     CircSimple();
     void insertarDatos(void);
     void imprimirDatos();
-    void imprimirDatos(nodo *p);
     void eliminarPersona(void);
 };
 
@@ -53,7 +52,7 @@ void CircSimple::insertarDatos(void)
     cout<<"Ingrese la raza de la mascota: "; getline(cin, dato->raza);
     cout<<"Ingrese el peso de la mascota: "<<"lb "; cin>>dato->peso;
     cin.ignore();
-    cout<<"Ingrese la edad de la mascota: "; cin>>dato->edad;
+    cout<<"Ingrese la edad de la mascota: "<<"anos "; cin>>dato->edad;
 
 	dato->sig = NULL;
 
@@ -71,40 +70,48 @@ void CircSimple::insertarDatos(void)
     cout<<"\t!Persona agregada correctamente!\n";
 }
 
+
 void CircSimple::imprimirDatos()
-{
-	nodo *dato = pInicio;
-	if (!dato)
-    {   
-        cout<<"\t\n*No hay lista que mostrar*\n";
-        return;
-    }
-	else
+{	
+
+	nodo *saltarin= new nodo();
+
+    saltarin = pInicio;
+    bool encontrado = false;
+    int nodobuscado = 0;
+
+    cout <<"Ingrese el ID del usuario a mostrar: ";
+    cin >>  nodobuscado; cout << endl;
+    cin.ignore();
+
+    if (pInicio != NULL)
 	{
-        cout<<"ID: "<<dato->id<<endl;
-        cout<<"Nombre del dueno: "<<dato->nombreDueno<<endl;
-        cout<<"Nombre de la mascota "<<dato->nombreMascota<<endl;
-        cout<<"raza: "<<dato->raza<<endl;
-        cout<<"peso: "<<dato->peso<<endl;
-        cout<<"edad : "<<dato->edad<<endl<<endl;
-		imprimirDatos(dato->sig);
-	}
-    
-}
-void CircSimple::imprimirDatos(nodo *dato)
-{
-	if (!dato)
-		return;
-	else
-	{
-        cout<<"ID: "<<dato->id<<endl;
-        cout<<"Nombre del dueno: "<<dato->nombreDueno<<endl;
-        cout<<"Nombre de la mascota "<<dato->nombreMascota<<endl;
-        cout<<"raza: "<<dato->raza<<endl;
-        cout<<"peso: "<<dato->peso<<endl;
-        cout<<"edad : "<<dato->edad<<endl<<endl;
-		imprimirDatos(dato->sig);
-	}
+		do
+        {  
+			if (saltarin->id == nodobuscado){
+            cout <<"ID ["<<saltarin->id<<"]"<<endl;
+            cout <<"Nombre del duenio: "<<saltarin->nombreDueno<<endl;
+			cout <<"Nombre de la mascota: "<<saltarin->nombreMascota<<endl;
+            cout <<"Raza de la mascota: "<<saltarin->raza<<endl;
+            cout <<"Peso: "<<saltarin->peso<<" lb" <<endl;
+            cout <<"Edad: " <<saltarin->edad <<" anos"<<endl;
+
+            encontrado = true;
+            }
+
+            saltarin = saltarin->sig;
+
+        } while (saltarin != pInicio && encontrado!= true);
+
+        if(!encontrado)
+		{
+            cout <<"ID no encontrado."<<endl;
+        }
+
+        }else
+		{
+            cout <<"La lista esta vacia."<<endl;
+        }
 }
 
 void CircSimple::eliminarPersona(void)
